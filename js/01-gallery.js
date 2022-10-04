@@ -3,6 +3,7 @@ import { galleryItems } from "./gallery-items.js";
 
 console.log(galleryItems);
 const galleryContainerEl = document.querySelector(".gallery");
+let instance;
 
 function createGalleryItemsMarkup(galleryItems) {
   return galleryItems
@@ -30,7 +31,7 @@ function onOpenModal(e) {
   e.preventDefault();
   const srcBig = e.target.dataset.source;
   if (e.target.nodeName === "IMG") {
-    const instance = basicLightbox.create(`
+    instance = basicLightbox.create(`
     <img
     class="gallery__image"
     src="${srcBig}"

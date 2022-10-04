@@ -1,7 +1,7 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-console.log(galleryItems);
+// console.log(galleryItems);
 const galleryContainerEl = document.querySelector(".gallery");
 
 function createGalleryItemsMarkup(galleryItems) {
@@ -19,19 +19,11 @@ function createGalleryItemsMarkup(galleryItems) {
 const gallerysMarkup = createGalleryItemsMarkup(galleryItems);
 galleryContainerEl.insertAdjacentHTML("beforeend", gallerysMarkup);
 
-// let gallery = new SimpleLightbox(".gallery a");
 let gallery = new SimpleLightbox(".gallery a", {
-  cartion: true,
+  captions: true,
+  captionDelay: 250,
   captionSelector: "self",
   captionType: "data",
   captionClass: "sl-caption",
-  // captionsData: "description",
+  captionsData: "caption",
 });
-
-gallery.on("show.simplelightbox", function (e) {
-  // e.captionSelector = e.target.querySelector(".gallery__image").alt;
-  // console.log(e.captionSelector, "botoom", e.captionSelector);
-  // return e.captionSelector;
-});
-
-console.log(gallery.captionData);
