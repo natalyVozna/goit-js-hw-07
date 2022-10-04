@@ -29,17 +29,19 @@ galleryContainerEl.addEventListener("click", onOpenModal);
 function onOpenModal(e) {
   e.preventDefault();
   const srcBig = e.target.dataset.source;
-  e.target.src = srcBig;
-  const instance = basicLightbox.create(`
-                 <img
-                   class="gallery__image"
-                   src="${srcBig}"
-                   data-source="${srcBig}"
-                   alt="${e.target.alt}"
-                 />
-              `);
+  if (e.target.nodeName === "IMG") {
+    const instance = basicLightbox.create(`
+    <img
+    class="gallery__image"
+    src="${srcBig}"
+    data-source="${srcBig}"
+    alt="${e.target.alt}"
+    />
+    `);
+    instance.element().querySelector("img").src = srcBig;
 
-  instance.show();
+    instance.show();
+  }
 
   window.addEventListener("keydown", (e) => {
     const ESC_KEY_CODE = "Escape";
