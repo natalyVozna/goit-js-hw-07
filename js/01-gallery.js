@@ -29,17 +29,10 @@ galleryContainerEl.addEventListener("click", onOpenModal);
 
 function onOpenModal(e) {
   e.preventDefault();
-  const srcBig = e.target.dataset.source;
+  console.log(e.target.nodeName);
   if (e.target.nodeName === "IMG") {
     instance = basicLightbox.create(`
-    <img
-    class="gallery__image"
-    src="${srcBig}"
-    data-source="${srcBig}"
-    alt="${e.target.alt}"
-    />
-    `);
-    instance.element().querySelector("img").src = srcBig;
+    <img src="${e.target.dataset.source}" /> `);
 
     instance.show();
   }
